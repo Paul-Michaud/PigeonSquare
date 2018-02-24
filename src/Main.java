@@ -27,25 +27,56 @@ public class Main extends Application {
         this.env = new Environment();
         primaryStage.setTitle("Pigeon Square !");
 
-        Button btn = new Button();
-        btn.setText("Reset");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
+        Button btnReset = new Button();
+        btnReset.setText("Reset");
+        btnReset.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
+                System.out.println("Reset");
             }
         });
 
         Pane root = new Pane();
-        btn.setLayoutX(0);
-        btn.setLayoutY(0);
-        root.getChildren().add(btn);
+        btnReset.setLayoutX(0);
+        btnReset.setLayoutY(0);
+        root.getChildren().add(btnReset);
+
+        Button btnAddPigeon = new Button();
+        btnAddPigeon.setText("Add Pigeon");
+        btnAddPigeon.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Add Pigeon");
+
+                Random random = new Random();
+                int randomNumber = random.nextInt(3) + 1;
+                int randomX = random.nextInt(800);
+                int randomY = random.nextInt(800);
+                switch (randomNumber) {
+                    case 1:
+                        allMobile.add(new Ramier(randomX, randomY));
+                        break;
+                    case 2:
+                        allMobile.add(new Colombin(randomX, randomY));
+                        break;
+                    case 3:
+                        allMobile.add(new Biset(randomX, randomY));
+                        break;
+                }
+            }
+        });
+
+        btnAddPigeon.setLayoutX(60);
+        btnAddPigeon.setLayoutY(0);
+        root.getChildren().add(btnAddPigeon);
+
 
         root.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
                 System.out.println("X:" + me.getX() + " Y:" + me.getY());
                 if(me.getButton() == MouseButton.PRIMARY) {
                     System.out.println("Left click");
+                    
                     final ImageView imv = new ImageView();
                     final Image image2 = new Image(Main.class.getResourceAsStream("flip.jpg"));
                     imv.setImage(image2);
@@ -53,29 +84,6 @@ public class Main extends Application {
                     imv.setLayoutY(me.getY());
                     root.getChildren().add(imv);
 
-                    Random random = new Random();
-                    int randomNumber = random.nextInt(3) + 1;
-                    switch (randomNumber) {
-                        case 1:
-                            allMobile.add(new Ramier(me.getX(), me.getY()));
-                            break;
-                        case 2:
-                            allMobile.add(new Colombin(me.getX(), me.getY()));
-                            break;
-                        case 3:
-                            allMobile.add(new Biset(me.getX(), me.getY()));
-                            break;
-                    }
-
-                    for (Mobile m : allMobile) {
-                        System.out.println(m.getSpeed());
-                    }
-                }
-                if(me.getButton() == MouseButton.SECONDARY) {
-                    System.out.println("Right click");
-                }
-                if(me.getButton() == MouseButton.MIDDLE) {
-                    System.out.println("Middle click");
                 }
             }
         });
