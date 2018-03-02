@@ -57,4 +57,18 @@ public class Square {
         foodList.add((Food) item);
         return item;
     }
+
+    public void reset(){
+        List<Item> items = new ArrayList<>();
+        items.addAll(this.pigeons);
+        items.addAll(this.foodList);
+
+        for(Item item : items){
+            Main.removeGraphicItem(item.getImageView());
+            item.stop();
+        }
+
+        this.pigeons.clear();
+        this.foodList.clear();
+    }
 }

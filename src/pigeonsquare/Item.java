@@ -6,20 +6,20 @@ import pigeonsquare.utils.Position;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class Item implements Runnable {
+
     protected ImageView imageView;
     protected Position position;
     protected double paddingX,paddingY;
+    protected boolean running;
+
+    public Item(){
+        this.running = true;
+    }
 
     public ImageView getImageView() {
         return imageView;
-    }
-
-    public Position getPosition() {
-        return position;
     }
 
     public void loadImage(String path) {
@@ -38,6 +38,10 @@ public abstract class Item implements Runnable {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public void stop(){
+        this.running = false;
     }
 
     @Override

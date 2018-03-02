@@ -1,6 +1,7 @@
 package pigeonsquare;
 
 import javafx.application.Application;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseButton;
@@ -10,6 +11,7 @@ import pigeonsquare.utils.Position;
 
 public class Main extends Application {
     Environment env;
+    private static Pane root = new Pane();
 
     public static void main(String[] args) {
         launch(args);
@@ -22,9 +24,8 @@ public class Main extends Application {
 
         Button btnReset = new Button();
         btnReset.setText("Reset");
-        btnReset.setOnAction(event -> System.out.println("Reset"));
+        btnReset.setOnAction(event -> Square.getInstance().reset());
 
-        Pane root = new Pane();
         btnReset.setLayoutX(0);
         btnReset.setLayoutY(0);
         root.getChildren().add(btnReset);
@@ -58,6 +59,10 @@ public class Main extends Application {
         root.setStyle("-fx-background-color: white");
         primaryStage.setScene(new Scene(root, 800, 800));
         primaryStage.show();
+    }
+
+    public static void removeGraphicItem(Node node){
+        root.getChildren().remove(node);
     }
 }
 
