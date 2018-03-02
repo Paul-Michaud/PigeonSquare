@@ -1,8 +1,12 @@
 package pigeonsquare.pigeons;
 
+import pigeonsquare.utils.Position;
+
 public class Ramier extends Pigeon {
-    public Ramier(double posX, double posY) {
-        super(posX, posY);
-        this.size = 15;
+    private static final String assetPath = "assets/pigeon.png";
+
+    public Ramier(Position position) {
+        this.position = position;
+        this.loadImage(assetPath);
     }
 }

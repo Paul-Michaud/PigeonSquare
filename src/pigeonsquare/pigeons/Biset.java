@@ -1,8 +1,12 @@
 package pigeonsquare.pigeons;
 
+import pigeonsquare.utils.Position;
+
 public class Biset extends Pigeon {
-    public Biset(double posX, double posY) {
-        super(posX, posY);
-        this.size = 10;
+    private static final String assetPath = "assets/pigeon.png";
+
+    public Biset(Position position) {
+        this.position = position;
+        this.loadImage(assetPath);
     }
 }

@@ -6,8 +6,10 @@ import pigeonsquare.utils.Position;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Item {
+public abstract class Item implements Runnable {
     protected ImageView imageView;
     protected Position position;
     protected double paddingX,paddingY;
@@ -37,4 +39,10 @@ public class Item {
             e.printStackTrace();
         }
     }
-}
+
+    @Override
+    public void run() {
+
+    }
+
+    }
