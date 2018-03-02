@@ -24,7 +24,6 @@ public class Square {
         Item item;
         item = new Food(position);
         foodList.add((Food) item);
-        System.out.println("Food added");
         return item;
     }
 }

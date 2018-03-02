@@ -66,14 +66,16 @@ public class Main extends Application {
 
 
         root.setOnMouseClicked(me -> {
-            System.out.println(me.getX()+" "+me.getY());
             Position position = new Position(me.getX(),me.getY());
-            Item item;
+            Item item = null;
 
+            // LEFT CLICK : ADD FOOD
             if(me.getButton() == MouseButton.PRIMARY) {
                 item = Square.getInstance().addFood(position);
-                root.getChildren().add(item.getImageView());
+            }
 
+            if (item != null) {
+                root.getChildren().add(item.getImageView());
             }
         });
 
