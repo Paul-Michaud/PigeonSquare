@@ -1,3 +1,5 @@
+package pigeonsquare;
+
 public class Mobile extends Thread{
 
     protected int size;
