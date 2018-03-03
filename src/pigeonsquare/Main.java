@@ -24,7 +24,7 @@ public class Main extends Application {
 
         Button btnReset = new Button();
         btnReset.setText("Reset");
-        btnReset.setOnAction(event -> Square.getInstance().reset());
+        btnReset.setOnAction(event -> Environment.getInstance().reset());
 
         btnReset.setLayoutX(0);
         btnReset.setLayoutY(0);
@@ -37,7 +37,7 @@ public class Main extends Application {
         btnAddPigeon.setLayoutY(0);
         btnAddPigeon.setOnAction(event -> {
             System.out.println("Add Pigeon");
-            Item item = Square.getInstance().addPigeon();
+            Item item = Environment.getInstance().addPigeon();
             if(item != null){
                 root.getChildren().add(item.getImageView());
                 Thread thread = new Thread(item);
@@ -52,7 +52,7 @@ public class Main extends Application {
             Item item = null;
 
             // LEFT CLICK : ADD FOOD
-            if(me.getButton() == MouseButton.PRIMARY) item = Square.getInstance().addFood(position);
+            if(me.getButton() == MouseButton.PRIMARY) item = Environment.getInstance().addFood(position);
             if (item != null) {
                 root.getChildren().add(item.getImageView());
                 Thread thread = new Thread(item);

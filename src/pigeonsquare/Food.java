@@ -18,7 +18,7 @@ public class Food extends Item {
             Thread.sleep(2000);
             this.isFresh = false;
             Thread.sleep(2000);
-            Square.getInstance().removeFood(this);
+            Environment.getInstance().removeFood(this);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

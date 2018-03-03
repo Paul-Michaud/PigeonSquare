@@ -17,11 +17,9 @@ public abstract class MobileItem extends Item {
 
     @Override
     public void run() {
-
         while (this.running) {
 
         }
-
     }
 
 
