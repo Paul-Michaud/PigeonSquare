@@ -1,5 +1,6 @@
 package pigeonsquare;
 
+import javafx.application.Platform;
 import pigeonsquare.pigeons.Biset;
 import pigeonsquare.pigeons.Colombin;
 import pigeonsquare.pigeons.Pigeon;
@@ -58,7 +59,13 @@ public class Square {
         return item;
     }
 
-    public void reset(){
+    public void removeFood(Food food) {
+        // TODO : Check if piheon on food ?
+        foodList.remove(food);
+        Platform.runLater(() -> Main.removeGraphicItem(food.getImageView()));
+    }
+
+    public void reset() {
         List<Item> items = new ArrayList<>();
         items.addAll(this.pigeons);
         items.addAll(this.foodList);

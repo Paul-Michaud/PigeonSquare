@@ -53,7 +53,11 @@ public class Main extends Application {
 
             // LEFT CLICK : ADD FOOD
             if(me.getButton() == MouseButton.PRIMARY) item = Square.getInstance().addFood(position);
-            if (item != null) root.getChildren().add(item.getImageView());
+            if (item != null) {
+                root.getChildren().add(item.getImageView());
+                Thread thread = new Thread(item);
+                thread.start();
+            }
         });
 
         root.setStyle("-fx-background-color: white");
