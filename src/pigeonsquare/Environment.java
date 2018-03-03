@@ -78,10 +78,6 @@ public class Environment {
         this.foodList.clear();
     }
 
-    //addfood
-
-    //removeFood
-
     //foodAvailable
 
     //getNearestFood

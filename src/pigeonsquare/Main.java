@@ -10,7 +10,6 @@ import javafx.stage.Stage;
 import pigeonsquare.utils.Position;
 
 public class Main extends Application {
-    Environment env;
     private static Pane root = new Pane();
 
     public static void main(String[] args) {
@@ -19,7 +18,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        this.env = new Environment();
         primaryStage.setTitle("Pigeon Square");
 
         Button btnReset = new Button();
@@ -50,8 +48,6 @@ public class Main extends Application {
         root.setOnMouseClicked(me -> {
             Position position = new Position(me.getX(),me.getY());
             Item item = null;
-
-            // LEFT CLICK : ADD FOOD
             if(me.getButton() == MouseButton.PRIMARY) item = Environment.getInstance().addFood(position);
             if (item != null) {
                 root.getChildren().add(item.getImageView());
