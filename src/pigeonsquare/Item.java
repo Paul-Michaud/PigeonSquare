@@ -2,19 +2,20 @@ package pigeonsquare;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import pigeonsquare.utils.Position;
+import com.sun.javafx.geom.Vec2d;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public abstract class Item implements Runnable {
 
-    protected ImageView imageView;
-    protected Position position;
-    protected double paddingX,paddingY;
+    private ImageView imageView;
+    protected Vec2d position;
+    private double paddingX;
+    private double paddingY;
     protected boolean running;
 
-    public Item(){
+    Item(){
         this.running = true;
     }
 
@@ -22,7 +23,7 @@ public abstract class Item implements Runnable {
         return imageView;
     }
 
-    public void loadImage(String path) {
+    protected void loadImage(String path) {
         try {
             Image image = new Image(new FileInputStream(path));
             imageView = new ImageView();

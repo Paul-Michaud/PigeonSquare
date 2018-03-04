@@ -1,12 +1,10 @@
 package pigeonsquare;
 
-import pigeonsquare.utils.Position;
-
 public abstract class MobileItem extends Item {
 
     protected int speed;
 
-    public MobileItem() {
+    protected MobileItem() {
 
     }
 

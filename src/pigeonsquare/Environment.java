@@ -1,22 +1,22 @@
 package pigeonsquare;
 
+import com.sun.javafx.geom.Vec2d;
 import javafx.application.Platform;
 import pigeonsquare.pigeons.Biset;
 import pigeonsquare.pigeons.Colombin;
 import pigeonsquare.pigeons.Pigeon;
 import pigeonsquare.pigeons.Ramier;
-import pigeonsquare.utils.Position;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class Environment {
-    private static Environment environment = new Environment();
-    private List<Pigeon> pigeons;
-    private List<Food> foodList;
+    private static final Environment environment = new Environment();
+    private final List<Pigeon> pigeons;
+    private final List<Food> foodList;
 
-    public Environment() {
+    private Environment() {
         this.pigeons = new ArrayList<>();
         this.foodList = new ArrayList<>();
     }
@@ -31,7 +31,7 @@ public class Environment {
 
         int randomX = random.nextInt(800);
         int randomY = random.nextInt(800);
-        Position position = new Position(randomX,randomY);
+        Vec2d position = new Vec2d(randomX,randomY);
 
         switch (random.nextInt(3) + 1) {
             case 1:
@@ -51,7 +51,7 @@ public class Environment {
         }
     }
 
-    public Item addFood(Position position) {
+    public Item addFood(Vec2d position) {
         Item item;
         item = new Food(position);
         foodList.add((Food) item);
@@ -80,6 +80,13 @@ public class Environment {
 
     //foodAvailable
 
-    //getNearestFood
+    /**
+     Get the nearest food from a specified position
+     @param position The position we're searching from
+     @return The position of the nearest food
+     */
+    public Vec2d getNearestFood(Vec2d position) {
+        return new Vec2d(0,0);
+    }
 
 }
