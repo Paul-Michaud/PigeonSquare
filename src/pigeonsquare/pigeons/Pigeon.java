@@ -9,4 +9,11 @@ abstract public class Pigeon extends MobileItem {
         Random random = new Random();
         this.speed = random.nextInt(201);
     }
+
+    @Override
+    public void run() {
+        while (this.running) {
+
+        }
+    }
 }

@@ -5,10 +5,9 @@ import pigeonsquare.utils.Position;
 public abstract class MobileItem extends Item {
 
     protected int speed;
-    protected Position position;
 
     public MobileItem() {
-        this.position = new Position();
+
     }
 
     public int getSpeed() {
@@ -18,7 +17,7 @@ public abstract class MobileItem extends Item {
     @Override
     public void run() {
         while (this.running) {
-
+            System.out.println("mobileItem");
         }
     }
 
