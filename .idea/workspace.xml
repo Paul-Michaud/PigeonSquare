@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c11e68a9-f8a5-4dcc-90cd-29e3e996fa00" name="Default" comment="replace position by vec2d and fix warning">
+    <list default="true" id="c11e68a9-f8a5-4dcc-90cd-29e3e996fa00" name="Default" comment="Thread pigeon 30FPS (can be 30, 60 or 120), pigeon get the nearest food">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/pigeonsquare/Environment.java" afterPath="$PROJECT_DIR$/src/pigeonsquare/Environment.java" />
       <change beforePath="$PROJECT_DIR$/src/pigeonsquare/Food.java" afterPath="$PROJECT_DIR$/src/pigeonsquare/Food.java" />
       <change beforePath="$PROJECT_DIR$/src/pigeonsquare/Item.java" afterPath="$PROJECT_DIR$/src/pigeonsquare/Item.java" />
-      <change beforePath="$PROJECT_DIR$/src/pigeonsquare/Main.java" afterPath="$PROJECT_DIR$/src/pigeonsquare/Main.java" />
       <change beforePath="$PROJECT_DIR$/src/pigeonsquare/MobileItem.java" afterPath="$PROJECT_DIR$/src/pigeonsquare/MobileItem.java" />
-      <change beforePath="$PROJECT_DIR$/src/pigeonsquare/pigeons/Biset.java" afterPath="$PROJECT_DIR$/src/pigeonsquare/pigeons/Biset.java" />
-      <change beforePath="$PROJECT_DIR$/src/pigeonsquare/pigeons/Colombin.java" afterPath="$PROJECT_DIR$/src/pigeonsquare/pigeons/Colombin.java" />
-      <change beforePath="$PROJECT_DIR$/src/pigeonsquare/pigeons/Ramier.java" afterPath="$PROJECT_DIR$/src/pigeonsquare/pigeons/Ramier.java" />
-      <change beforePath="$PROJECT_DIR$/src/pigeonsquare/utils/Position.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/pigeonsquare/pigeons/Pigeon.java" afterPath="$PROJECT_DIR$/src/pigeonsquare/pigeons/Pigeon.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,7 +34,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pigeonsquare/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
+            <state relative-caret-position="-126">
               <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding />
             </state>
@@ -48,14 +44,15 @@
       <file leaf-file-name="Item.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pigeonsquare/Item.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+            <state relative-caret-position="349">
+              <caret line="47" column="32" lean-forward="false" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#412#413#0" expanded="true" />
                 <element signature="e#447#448#0" expanded="true" />
                 <element signature="e#486#487#0" expanded="true" />
                 <element signature="e#518#519#0" expanded="true" />
+                <element signature="e#1252#1253#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -81,15 +78,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Environment.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Environment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pigeonsquare/Environment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="689">
-              <caret line="88" column="25" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+            <state relative-caret-position="313">
+              <caret line="100" column="10" lean-forward="false" selection-start-line="100" selection-start-column="10" selection-end-line="100" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2378#2379#0" expanded="true" />
-                <element signature="e#2415#2416#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -105,12 +100,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Food.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Food.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pigeonsquare/Food.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-              <folding />
+            <state relative-caret-position="529">
+              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <folding>
+                <element signature="e#644#645#0" expanded="true" />
+                <element signature="e#674#675#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -118,8 +116,8 @@
       <file leaf-file-name="MobileItem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pigeonsquare/MobileItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+            <state relative-caret-position="126">
+              <caret line="7" column="34" lean-forward="false" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -128,8 +126,8 @@
       <file leaf-file-name="Pigeon.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pigeonsquare/pigeons/Pigeon.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+            <state relative-caret-position="180">
+              <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -173,15 +171,15 @@
         <option value="$PROJECT_DIR$/src/Biset.java" />
         <option value="$PROJECT_DIR$/src/Ramier.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/pigeonsquare/pigeons/Pigeon.java" />
         <option value="$PROJECT_DIR$/src/pigeonsquare/pigeons/Ramier.java" />
         <option value="$PROJECT_DIR$/src/pigeonsquare/pigeons/Colombin.java" />
         <option value="$PROJECT_DIR$/src/pigeonsquare/pigeons/Biset.java" />
         <option value="$PROJECT_DIR$/src/pigeonsquare/Main.java" />
         <option value="$PROJECT_DIR$/src/pigeonsquare/MobileItem.java" />
-        <option value="$PROJECT_DIR$/src/pigeonsquare/Environment.java" />
-        <option value="$PROJECT_DIR$/src/pigeonsquare/Item.java" />
         <option value="$PROJECT_DIR$/src/pigeonsquare/Food.java" />
+        <option value="$PROJECT_DIR$/src/pigeonsquare/Item.java" />
+        <option value="$PROJECT_DIR$/src/pigeonsquare/Environment.java" />
+        <option value="$PROJECT_DIR$/src/pigeonsquare/pigeons/Pigeon.java" />
       </list>
     </option>
   </component>
@@ -374,7 +372,7 @@
       <workItem from="1520032259145" duration="103000" />
       <workItem from="1520113321600" duration="68000" />
       <workItem from="1520196445661" duration="1294000" />
-      <workItem from="1520198858798" duration="1718000" />
+      <workItem from="1520198858798" duration="4049000" />
     </task>
     <task id="LOCAL-00001" summary="add run for pigeon &amp; fix issue when adding pigeon">
       <created>1520199657975</created>
@@ -383,11 +381,18 @@
       <option name="project" value="LOCAL" />
       <updated>1520199657976</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="replace position by vec2d and fix warning">
+      <created>1520200584122</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1520200584122</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14441000" />
+    <option name="totallyTimeSpent" value="16772000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="296" y="-9" width="1853" height="1055" extended-state="6" />
@@ -463,7 +468,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add run for pigeon &amp; fix issue when adding pigeon" />
     <MESSAGE value="replace position by vec2d and fix warning" />
-    <option name="LAST_COMMIT_MESSAGE" value="replace position by vec2d and fix warning" />
+    <MESSAGE value="Thread pigeon 30FPS (can be 30, 60 or 120), pigeon get the nearest food" />
+    <option name="LAST_COMMIT_MESSAGE" value="Thread pigeon 30FPS (can be 30, 60 or 120), pigeon get the nearest food" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -490,8 +496,6 @@
           <caret line="50" column="9" lean-forward="true" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2378#2379#0" expanded="true" />
-            <element signature="e#2415#2416#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -540,6 +544,7 @@
             <element signature="e#447#448#0" expanded="true" />
             <element signature="e#486#487#0" expanded="true" />
             <element signature="e#518#519#0" expanded="true" />
+            <element signature="e#1252#1253#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -614,16 +619,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pigeonsquare/pigeons/Pigeon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pigeonsquare/pigeons/Colombin.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -642,7 +637,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pigeonsquare/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
+        <state relative-caret-position="-126">
           <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
@@ -650,43 +645,55 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pigeonsquare/MobileItem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        <state relative-caret-position="126">
+          <caret line="7" column="34" lean-forward="false" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pigeonsquare/Environment.java">
+    <entry file="file://$PROJECT_DIR$/src/pigeonsquare/Food.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="689">
-          <caret line="88" column="25" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+        <state relative-caret-position="529">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2378#2379#0" expanded="true" />
-            <element signature="e#2415#2416#0" expanded="true" />
+            <element signature="e#644#645#0" expanded="true" />
+            <element signature="e#674#675#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pigeonsquare/Item.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        <state relative-caret-position="349">
+          <caret line="47" column="32" lean-forward="false" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#412#413#0" expanded="true" />
             <element signature="e#447#448#0" expanded="true" />
             <element signature="e#486#487#0" expanded="true" />
             <element signature="e#518#519#0" expanded="true" />
+            <element signature="e#1252#1253#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pigeonsquare/Food.java">
+    <entry file="file://$PROJECT_DIR$/src/pigeonsquare/pigeons/Pigeon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-          <folding />
+        <state relative-caret-position="180">
+          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pigeonsquare/Environment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="100" column="10" lean-forward="false" selection-start-line="100" selection-start-column="10" selection-end-line="100" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

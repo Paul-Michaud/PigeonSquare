@@ -3,6 +3,9 @@ package pigeonsquare;
 public abstract class MobileItem extends Item {
 
     protected int speed;
+    protected int sixtyFPS = 16;
+    protected int thirtyFPS = 32;
+    protected int oneTwentyFPS = 8;
 
     protected MobileItem() {
 

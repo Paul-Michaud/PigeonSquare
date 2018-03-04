@@ -86,7 +86,23 @@ public class Environment {
      @return The position of the nearest food
      */
     public Vec2d getNearestFood(Vec2d position) {
-        return new Vec2d(0,0);
+        double minDist = Double.POSITIVE_INFINITY;
+        Vec2d nearestFood = null;
+        //lock all food so they don't disapear during the check which would
+        //allow a pigeon to go toward a disapeared food
+        try {
+            for (Food food : foodList) {
+                double dist = food.position.distance(position);
+                if (dist < minDist && food.isFresh()){
+                    minDist = dist;
+                    nearestFood = food.getPosition();
+                }
+            }
+        } finally {
+           //unlock all food
+        }
+
+        return nearestFood;
     }
 
 }

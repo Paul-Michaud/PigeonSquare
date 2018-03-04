@@ -23,4 +23,10 @@ public class Food extends Item {
             e.printStackTrace();
         }
     }
+
+    public boolean isFresh() {
+        return isFresh;
+    }
+
+
 }

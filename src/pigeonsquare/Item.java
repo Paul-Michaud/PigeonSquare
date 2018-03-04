@@ -45,9 +45,14 @@ public abstract class Item implements Runnable {
         this.running = false;
     }
 
+    public Vec2d getPosition() {
+        return position;
+    }
+
     @Override
     public void run() {
 
     }
 
-    }
+
+}
