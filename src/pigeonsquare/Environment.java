@@ -59,8 +59,10 @@ public class Environment {
     }
 
     public void removeFood(Food food) {
-        // TODO : Check if piheon on food ?
+        // TODO : Check if pigeon on food ? -> ok with the lock ?
+        food.lock();
         foodList.remove(food);
+        food.unlock();
         Platform.runLater(() -> Main.removeGraphicItem(food.getImageView()));
     }
 
@@ -70,15 +72,18 @@ public class Environment {
         items.addAll(this.foodList);
 
         for(Item item : items){
+            item.lock();
             Main.removeGraphicItem(item.getImageView());
             item.stop();
+            item.unlock();
+
         }
 
         this.pigeons.clear();
         this.foodList.clear();
     }
 
-    //foodAvailable
+
 
     /**
      Get the nearest food from a specified position
@@ -88,19 +93,16 @@ public class Environment {
     public Vec2d getNearestFood(Vec2d position) {
         double minDist = Double.POSITIVE_INFINITY;
         Vec2d nearestFood = null;
-        //lock all food so they don't disapear during the check which would
-        //allow a pigeon to go toward a disapeared food
-        try {
-            for (Food food : foodList) {
-                double dist = food.position.distance(position);
-                if (dist < minDist && food.isFresh()){
-                    minDist = dist;
-                    nearestFood = food.getPosition();
-                }
+        for (Food food : foodList) {
+            food.lock();
+            double dist = food.position.distance(position);
+            if (dist < minDist && food.isFresh()){
+                minDist = dist;
+                nearestFood = food.getPosition();
             }
-        } finally {
-           //unlock all food
+            food.unlock();
         }
+
 
         return nearestFood;
     }

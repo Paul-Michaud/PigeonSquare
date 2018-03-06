@@ -2,6 +2,7 @@ package pigeonsquare;
 
 import com.sun.javafx.geom.Vec2d;
 
+
 public class Food extends Item {
     private static final String assetPath = "assets/seed.png";
     private boolean isFresh;
@@ -27,6 +28,7 @@ public class Food extends Item {
     public boolean isFresh() {
         return isFresh;
     }
+
 
 
 }

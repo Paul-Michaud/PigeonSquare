@@ -6,14 +6,15 @@ import com.sun.javafx.geom.Vec2d;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.concurrent.locks.ReentrantLock;
 
 public abstract class Item implements Runnable {
 
     private ImageView imageView;
     protected Vec2d position;
-    private double paddingX;
-    private double paddingY;
     protected boolean running;
+    private final ReentrantLock lock = new ReentrantLock();
+
 
     Item(){
         this.running = true;
@@ -29,11 +30,11 @@ public abstract class Item implements Runnable {
             imageView = new ImageView();
             imageView.setImage(image);
 
-            this.paddingX = image.getWidth()/2.0;
-            this.paddingY = image.getHeight()/2.0;
+            double paddingX = image.getWidth() / 2.0;
+            double paddingY = image.getHeight() / 2.0;
 
-            imageView.setX(this.position.x-paddingX);
-            imageView.setY(this.position.y-paddingY);
+            imageView.setX(this.position.x- paddingX);
+            imageView.setY(this.position.y- paddingY);
             imageView.setFitHeight(image.getHeight());
             imageView.setPreserveRatio(true);
         } catch (FileNotFoundException e) {
@@ -54,5 +55,12 @@ public abstract class Item implements Runnable {
 
     }
 
+    public void lock() {
+        this.lock.lock();
+    }
+
+    public void unlock() {
+        this.lock.unlock();
+    }
 
 }
