@@ -6,15 +6,12 @@ import com.sun.javafx.geom.Vec2d;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.concurrent.locks.ReentrantLock;
 
 public abstract class Item implements Runnable {
 
     private ImageView imageView;
     protected Vec2d position;
     protected boolean running;
-    private final ReentrantLock lock = new ReentrantLock();
-
 
     Item(){
         this.running = true;
@@ -53,14 +50,6 @@ public abstract class Item implements Runnable {
     @Override
     public void run() {
 
-    }
-
-    public void lock() {
-        this.lock.lock();
-    }
-
-    public void unlock() {
-        this.lock.unlock();
     }
 
 }

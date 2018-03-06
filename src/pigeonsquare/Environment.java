@@ -10,11 +10,15 @@ import pigeonsquare.pigeons.Ramier;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class Environment {
     private static final Environment environment = new Environment();
     private final List<Pigeon> pigeons;
     private final List<Food> foodList;
+    private final ReadWriteLock lockFood = new ReentrantReadWriteLock();
+
 
     private Environment() {
         this.pigeons = new ArrayList<>();
@@ -60,27 +64,31 @@ public class Environment {
 
     public void removeFood(Food food) {
         // TODO : Check if pigeon on food ? -> ok with the lock ?
-        food.lock();
-        foodList.remove(food);
-        food.unlock();
-        Platform.runLater(() -> Main.removeGraphicItem(food.getImageView()));
+        lockFood.writeLock().lock();
+        try {
+            foodList.remove(food);
+            Platform.runLater(() -> Main.removeGraphicItem(food.getImageView()));
+        } finally {
+            lockFood.writeLock().unlock();
+        }
     }
 
     public void reset() {
         List<Item> items = new ArrayList<>();
         items.addAll(this.pigeons);
         items.addAll(this.foodList);
-
-        for(Item item : items){
-            item.lock();
-            Main.removeGraphicItem(item.getImageView());
-            item.stop();
-            item.unlock();
-
+        lockFood.writeLock().lock();
+        try {
+            for (Item item : items) {
+                Main.removeGraphicItem(item.getImageView());
+                item.stop();
+            }
+            this.pigeons.clear();
+            this.foodList.clear();
+        } finally {
+            lockFood.writeLock().unlock();
         }
 
-        this.pigeons.clear();
-        this.foodList.clear();
     }
 
 
@@ -93,17 +101,18 @@ public class Environment {
     public Vec2d getNearestFood(Vec2d position) {
         double minDist = Double.POSITIVE_INFINITY;
         Vec2d nearestFood = null;
-        for (Food food : foodList) {
-            food.lock();
-            double dist = food.position.distance(position);
-            if (dist < minDist && food.isFresh()){
-                minDist = dist;
-                nearestFood = food.getPosition();
+        lockFood.writeLock().lock();
+        try {
+            for (Food food : foodList) {
+                double dist = food.position.distance(position);
+                if (dist < minDist && food.isFresh()) {
+                    minDist = dist;
+                    nearestFood = food.getPosition();
+                }
             }
-            food.unlock();
+        } finally {
+            lockFood.writeLock().unlock();
         }
-
-
         return nearestFood;
     }
 
