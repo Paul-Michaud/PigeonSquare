@@ -17,12 +17,13 @@ public class Environment {
     private static final Environment environment = new Environment();
     private final List<Pigeon> pigeons;
     private final List<Food> foodList;
-    private final ReadWriteLock lockFood = new ReentrantReadWriteLock();
-
+    private final List<Dog> dogList;
+    private final ReadWriteLock lock = new ReentrantReadWriteLock();
 
     private Environment() {
         this.pigeons = new ArrayList<>();
         this.foodList = new ArrayList<>();
+        this.dogList = new ArrayList<>();
     }
 
     public static Environment getInstance() {
@@ -62,22 +63,37 @@ public class Environment {
         return item;
     }
 
-    public void removeFood(Food food) {
-        // TODO : Check if pigeon on food ? -> ok with the lock ?
-        lockFood.writeLock().lock();
+    public void removeItem(Item i) {
+        lock.writeLock().lock();
         try {
-            foodList.remove(food);
-            Platform.runLater(() -> Main.removeGraphicItem(food.getImageView()));
+            foodList.remove(i);
+            i.stop();
+            Platform.runLater(() -> Main.removeGraphicItem(i.getImageView()));
         } finally {
-            lockFood.writeLock().unlock();
+            lock.writeLock().unlock();
         }
+    }
+
+    public Item addDog() {
+        Item item;
+        Random random = new Random();
+
+        int randomX = random.nextInt(800);
+        int randomY = random.nextInt(800);
+        Vec2d position = new Vec2d(randomX,randomY);
+
+        item = new Dog(position);
+        dogList.add((Dog) item);
+
+        return item;
     }
 
     public void reset() {
         List<Item> items = new ArrayList<>();
         items.addAll(this.pigeons);
         items.addAll(this.foodList);
-        lockFood.writeLock().lock();
+        items.addAll(this.dogList);
+        lock.writeLock().lock();
         try {
             for (Item item : items) {
                 Main.removeGraphicItem(item.getImageView());
@@ -85,8 +101,9 @@ public class Environment {
             }
             this.pigeons.clear();
             this.foodList.clear();
+            this.dogList.clear();
         } finally {
-            lockFood.writeLock().unlock();
+            lock.writeLock().unlock();
         }
 
     }
@@ -94,26 +111,39 @@ public class Environment {
 
 
     /**
-     Get the nearest food from a specified position
+     Get the best goal from a specified position
+     Goal is an item, can be something to go to or to go away from
      @param position The position we're searching from
-     @return The position of the nearest food
+     @return The goal (item)
      */
-    public Vec2d getNearestFood(Vec2d position) {
+
+    public Item getGoal(Vec2d position) {
         double minDist = Double.POSITIVE_INFINITY;
-        Vec2d nearestFood = null;
-        lockFood.writeLock().lock();
+        Item goal = null;
+
+        List<Item> items = new ArrayList<>();
+        items.addAll(this.dogList);
+        items.addAll(this.foodList);
+
+        lock.writeLock().lock();
         try {
-            for (Food food : foodList) {
-                double dist = food.position.distance(position);
-                if (dist < minDist && food.isFresh()) {
-                    minDist = dist;
-                    nearestFood = food.getPosition();
+            for (Item i : items) {
+                double dist = i.position.distance(position);
+                if (dist < minDist) {
+                    if(i instanceof Food && ((Food) i).isFresh()) {
+                        minDist = dist;
+                        goal = i;
+                    }
+                    if(i instanceof Dog) {
+                        minDist = dist;
+                        goal = i;
+                    }
                 }
             }
         } finally {
-            lockFood.writeLock().unlock();
+            lock.writeLock().unlock();
         }
-        return nearestFood;
+        return goal;
     }
 
 }

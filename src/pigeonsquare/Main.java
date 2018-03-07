@@ -19,7 +19,6 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Pigeon Square");
-
         Button btnReset = new Button();
         btnReset.setText("Reset");
         btnReset.setOnAction(event -> Environment.getInstance().reset());
@@ -27,6 +26,10 @@ public class Main extends Application {
         btnReset.setLayoutX(0);
         btnReset.setLayoutY(0);
         root.getChildren().add(btnReset);
+
+        // DOG GENERATOR
+        Thread threadDogGenerator = new Thread(new DogGenerator());
+        threadDogGenerator.start();
 
         // ADD RANDOM PIGEON BUTTON
         Button btnAddPigeon = new Button();
@@ -64,6 +67,11 @@ public class Main extends Application {
     public static void removeGraphicItem(Node node){
         root.getChildren().remove(node);
     }
+
+    public static void addGraphicItem(Node node){
+        root.getChildren().add(node);
+    }
+
 }
 
 
