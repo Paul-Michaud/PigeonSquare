@@ -1,14 +1,17 @@
-package pigeonsquare;
+package pigeonsquare.dog;
 
 import javafx.application.Platform;
+import pigeonsquare.Environment;
+import pigeonsquare.Item;
+import pigeonsquare.Main;
 
 import java.util.Random;
 
-class DogGenerator implements Runnable {
+public class DogGenerator implements Runnable {
 
     private final boolean running;
 
-    DogGenerator() {
+    public DogGenerator() {
         this.running = true;
     }
 

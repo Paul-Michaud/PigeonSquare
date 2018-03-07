@@ -13,7 +13,7 @@ public abstract class Item implements Runnable {
     protected Vec2d position;
     protected boolean running;
 
-    Item(){
+    protected Item(){
         this.running = true;
     }
 

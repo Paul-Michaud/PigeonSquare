@@ -1,6 +1,8 @@
-package pigeonsquare;
+package pigeonsquare.dog;
 
 import com.sun.javafx.geom.Vec2d;
+import pigeonsquare.Environment;
+import pigeonsquare.Item;
 
 public class Dog extends Item {
 

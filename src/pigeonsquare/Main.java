@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import pigeonsquare.dog.*;
+import pigeonsquare.utils.*;
 
 public class Main extends Application {
     private static final Pane root = new Pane();
@@ -15,7 +17,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Pigeon Square");
@@ -60,7 +61,7 @@ public class Main extends Application {
         });
 
         root.setStyle("-fx-background-color: white");
-        primaryStage.setScene(new Scene(root, 800, 800));
+        primaryStage.setScene(new Scene(root, WindowsProperties.getWindowsWidth(), WindowsProperties.getWindowsHeight()));
         primaryStage.show();
     }
 

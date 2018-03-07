@@ -2,11 +2,11 @@ package pigeonsquare.pigeons;
 
 import com.sun.javafx.geom.Vec2d;
 import pigeonsquare.*;
+import pigeonsquare.dog.Dog;
 
 import java.util.Random;
 
 abstract public class Pigeon extends MobileItem {
-
     Pigeon() {
         Random random = new Random();
         this.speed = random.nextInt(201);
@@ -26,9 +26,9 @@ abstract public class Pigeon extends MobileItem {
                 if(goal instanceof Food) {
                     System.out.println("Go toward food at pos : X("+goalPosition.x+") Y("+goalPosition.y+")");
                 }
-            } else {
-                //Si pas de nourriture on fait quoi ? On va qqe part au hasard ?
             }
+            //Si pas de nourriture on fait quoi ? On va qqe part au hasard ?
+
 
 
             try {
