@@ -14,7 +14,7 @@ import java.io.FileNotFoundException;
 public abstract class Item implements Runnable {
 
     ImageView imageView;
-    protected Text text;
+    protected final Text text;
     protected Position position;
     protected boolean running;
 
@@ -60,7 +60,7 @@ public abstract class Item implements Runnable {
     }
 
 
-    protected void changeImage(String newPath) {
+    void changeImage(String newPath) {
         try {
             Image image = new Image(new FileInputStream(newPath));
             this.imageView.setImage(image);

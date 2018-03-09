@@ -91,9 +91,7 @@ public class Environment {
             if(i instanceof Dog) removeDog((Dog)i);
             if(i instanceof Pigeon) removePigeon((Pigeon)i);
             i.stop();
-            Platform.runLater(() -> {
-                Main.removeGraphicItem(i);
-            });
+            Platform.runLater(() -> Main.removeGraphicItem(i));
         } finally {
             lock.writeLock().unlock();
         }
@@ -180,7 +178,7 @@ public class Environment {
      @param food The food to be removed
      */
 
-    public void removeFood(Food food) {
+    private void removeFood(Food food) {
         if(foodList.contains(food)) {
             foodList.remove(food);
         }
@@ -191,7 +189,7 @@ public class Environment {
      @param dog The dog to be removed
      */
 
-    public void removeDog(Dog dog) {
+    private void removeDog(Dog dog) {
         if(dogList.contains(dog)) dogList.remove(dog);
 
     }
@@ -201,7 +199,7 @@ public class Environment {
      @param pigeon The pigeon to be removed
      */
 
-    public void removePigeon(Pigeon pigeon) {
+    private void removePigeon(Pigeon pigeon) {
         if(pigeonsList.contains(pigeon)) pigeonsList.remove(pigeon);
 
     }

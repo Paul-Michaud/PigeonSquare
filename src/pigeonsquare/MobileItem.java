@@ -4,8 +4,6 @@ import javafx.application.Platform;
 import pigeonsquare.pigeons.Pigeon;
 import pigeonsquare.utils.Constants;
 
-import java.util.Random;
-
 public abstract class MobileItem extends Item {
 
     protected int speed;

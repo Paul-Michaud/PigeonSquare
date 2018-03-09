@@ -7,7 +7,7 @@ import pigeonsquare.utils.Position;
 import java.util.Random;
 
 abstract public class Pigeon extends MobileItem {
-    protected int foodEaten;
+    private int foodEaten;
     Pigeon() {
         Random random = new Random();
         int minSpeed = 100;
@@ -35,7 +35,4 @@ abstract public class Pigeon extends MobileItem {
         this.text.setText("Food "+foodEaten);
     }
 
-    public int getFoodEaten() {
-        return foodEaten;
-    }
 }
