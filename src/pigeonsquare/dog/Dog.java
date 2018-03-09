@@ -1,16 +1,21 @@
 package pigeonsquare.dog;
 
-import com.sun.javafx.geom.Vec2d;
 import pigeonsquare.Environment;
 import pigeonsquare.Item;
+import pigeonsquare.MobileItem;
+import pigeonsquare.utils.Position;
 
-public class Dog extends Item {
+public class Dog extends MobileItem {
 
     private static final String assetPath = "assets/dog.png";
 
-    public Dog(Vec2d position) {
+    public Dog(Position position) {
         this.position = position;
         this.loadImage(assetPath);
+        this.speed = 0;
+    }
+    public void move(Item goal) {
+
     }
     @Override
     public void run() {
