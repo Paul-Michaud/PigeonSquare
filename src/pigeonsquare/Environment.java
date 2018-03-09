@@ -45,6 +45,7 @@ public class Environment {
         Random random = new Random();
 
         Position position = randomCoordsInWindow();
+
         switch (random.nextInt(3) + 1) {
             case 1:
                 item = new Biset(position);
@@ -86,11 +87,13 @@ public class Environment {
     public void removeItem(Item i) {
         lock.writeLock().lock();
         try {
-            if(i instanceof Food) foodList.remove(i);
-            if(i instanceof Dog) dogList.remove(i);
-            if(i instanceof Pigeon) pigeonsList.remove(i);
+            if(i instanceof Food) removeFood((Food)i);
+            if(i instanceof Dog) removeDog((Dog)i);
+            if(i instanceof Pigeon) removePigeon((Pigeon)i);
             i.stop();
-            Platform.runLater(() -> Main.removeGraphicItem(i.getImageView()));
+            Platform.runLater(() -> {
+                Main.removeGraphicItem(i);
+            });
         } finally {
             lock.writeLock().unlock();
         }
@@ -123,7 +126,7 @@ public class Environment {
         lock.writeLock().lock();
         try {
             for (Item item : items) {
-                Main.removeGraphicItem(item.getImageView());
+                Main.removeGraphicItem(item);
                 item.stop();
             }
             this.pigeonsList.clear();
@@ -147,12 +150,11 @@ public class Environment {
     public Item getPigeonGoal(Position position) {
         double minDist = Double.POSITIVE_INFINITY;
         Item goal = null;
-
+        lock.writeLock().lock();
         List<Item> items = new ArrayList<>();
         items.addAll(this.dogList);
         items.addAll(this.foodList);
 
-        lock.writeLock().lock();
         try {
             for (Item i : items) {
                 double dist = i.position.distance(position);
@@ -173,4 +175,34 @@ public class Environment {
         return goal;
     }
 
+    /**
+     Remove a food from the food list if it exists
+     @param food The food to be removed
+     */
+
+    public void removeFood(Food food) {
+        if(foodList.contains(food)) {
+            foodList.remove(food);
+        }
+    }
+
+    /**
+     Remove a dog from the dog list if it exists
+     @param dog The dog to be removed
+     */
+
+    public void removeDog(Dog dog) {
+        if(dogList.contains(dog)) dogList.remove(dog);
+
+    }
+
+    /**
+     Remove a pigeon from the pigeon list if it exists
+     @param pigeon The pigeon to be removed
+     */
+
+    public void removePigeon(Pigeon pigeon) {
+        if(pigeonsList.contains(pigeon)) pigeonsList.remove(pigeon);
+
+    }
 }

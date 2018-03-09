@@ -7,7 +7,6 @@ public class Food extends Item {
     private static final String badSeed = "assets/bad_seed.png";
 
     private boolean isFresh;
-
     Food(Position position) {
         this.position = position;
         this.isFresh = true;
@@ -30,7 +29,5 @@ public class Food extends Item {
     public boolean isFresh() {
         return isFresh;
     }
-
-
 
 }

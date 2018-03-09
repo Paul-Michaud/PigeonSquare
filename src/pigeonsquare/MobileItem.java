@@ -4,6 +4,8 @@ import javafx.application.Platform;
 import pigeonsquare.pigeons.Pigeon;
 import pigeonsquare.utils.Constants;
 
+import java.util.Random;
+
 public abstract class MobileItem extends Item {
 
     protected int speed;
@@ -33,11 +35,14 @@ public abstract class MobileItem extends Item {
                 Platform.runLater(() -> {
                     this.imageView.setX(this.position.x);
                     this.imageView.setY(this.position.y);
+                    ((Pigeon) this).text.relocate(this.position.x+10, this.position.y+this.getImageView().getFitHeight());
                 });
 
                 //if close enough to a food a pigeon will eat it
                 if (goal instanceof Food && this.isClose(goal) && ((Food) goal).isFresh()) {
                     Environment.getInstance().removeItem(goal);
+                    ((Pigeon) this).incrementFoodEaten();
+
                 }
             }
             try {

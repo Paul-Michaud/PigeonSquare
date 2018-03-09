@@ -27,6 +27,7 @@ public class Main extends Application {
         btnReset.setLayoutY(0);
         root.getChildren().add(btnReset);
 
+
         // DOG GENERATOR
         Thread threadDogGenerator = new Thread(new DogGenerator());
         threadDogGenerator.start();
@@ -41,6 +42,7 @@ public class Main extends Application {
             Item item = Environment.getInstance().addPigeon();
             if(item != null){
                 root.getChildren().add(item.getImageView());
+                root.getChildren().add(item.getText());
                 Thread thread = new Thread(item);
                 thread.start();
             }
@@ -64,8 +66,9 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public static void removeGraphicItem(Node node){
-        root.getChildren().remove(node);
+    public static void removeGraphicItem(Item i){
+        root.getChildren().remove(i.getImageView());
+        root.getChildren().remove(i.getText());
     }
 
     public static void addGraphicItem(Node node){
