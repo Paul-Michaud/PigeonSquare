@@ -60,7 +60,7 @@ public class Main extends Application {
         });
 
         root.setStyle("-fx-background-color: white");
-        primaryStage.setScene(new Scene(root, WindowsProperties.getWindowsWidth(), WindowsProperties.getWindowsHeight()));
+        primaryStage.setScene(new Scene(root, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT));
         primaryStage.show();
     }
 

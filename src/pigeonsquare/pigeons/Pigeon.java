@@ -15,7 +15,8 @@ abstract public class Pigeon extends MobileItem {
     }
 
     public void move(Item goal) {
-        Position newPosition = null;
+        //Init to old position in case we are not in any of the following if
+        Position newPosition =  new Position(this.position.x, this.position.y);
         if(goal instanceof Food) {
             newPosition = new Position(goal.getPosition().x - this.position.x,goal.getPosition().y - this.position.y);
         }

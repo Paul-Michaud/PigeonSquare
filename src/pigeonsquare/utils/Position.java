@@ -31,7 +31,7 @@ public class Position {
         return Math.sqrt(vx * vx + vy * vy);
     }
 
-    public double getLength(){
+    private double getLength(){
         return Math.sqrt(Math.pow(this.x,2) + Math.pow(this.y,2));
     }
 

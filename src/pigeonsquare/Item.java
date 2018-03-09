@@ -9,11 +9,11 @@ import java.io.FileNotFoundException;
 
 public abstract class Item implements Runnable {
 
-    protected ImageView imageView;
+    ImageView imageView;
     protected Position position;
     protected boolean running;
 
-    protected Item(){
+    Item(){
         this.running = true;
     }
 
@@ -56,9 +56,9 @@ public abstract class Item implements Runnable {
         return position;
     }
 
-    public boolean isClose(Item goal) {
+    boolean isClose(Item goal) {
         //Define the threshold
-        return (this.position.distance(goal.getPosition()) < 15) ? true : false;
+        return this.position.distance(goal.getPosition()) < 15;
     }
     @Override
     public void run() {

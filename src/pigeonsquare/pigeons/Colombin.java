@@ -1,6 +1,5 @@
 package pigeonsquare.pigeons;
 
-import com.sun.javafx.geom.Vec2d;
 import pigeonsquare.utils.Position;
 
 public class Colombin extends Pigeon {

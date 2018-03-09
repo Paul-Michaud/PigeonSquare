@@ -1,7 +1,6 @@
 package pigeonsquare;
 
 import javafx.application.Platform;
-import javafx.geometry.Pos;
 import pigeonsquare.dog.Dog;
 import pigeonsquare.pigeons.Biset;
 import pigeonsquare.pigeons.Colombin;
