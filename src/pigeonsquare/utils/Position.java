@@ -9,22 +9,6 @@ public class Position {
         this.y = y;
     }
 
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public void setY(double y) {
-        this.y = y;
-    }
-
-    public double getX() {
-        return x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
     public double distance(Position v) {
         double vx = v.x - this.x;
         double vy = v.y - this.y;

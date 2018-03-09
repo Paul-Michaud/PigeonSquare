@@ -55,7 +55,7 @@ public abstract class Item implements Runnable {
         }
     }
 
-    protected void changeImage(String newPath) {
+    void changeImage(String newPath) {
         try {
             Image image = new Image(new FileInputStream(newPath));
             this.imageView.setImage(image);
