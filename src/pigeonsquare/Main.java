@@ -1,6 +1,5 @@
 package pigeonsquare;
 
-import com.sun.javafx.geom.Vec2d;
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -50,7 +49,7 @@ public class Main extends Application {
 
         // ADD FOOD ACTION
         root.setOnMouseClicked(me -> {
-            Vec2d position = new Vec2d(me.getX(),me.getY());
+            Position position = new Position(me.getX(),me.getY());
             Item item = null;
             if(me.getButton() == MouseButton.PRIMARY) item = Environment.getInstance().addFood(position);
             if (item != null) {
