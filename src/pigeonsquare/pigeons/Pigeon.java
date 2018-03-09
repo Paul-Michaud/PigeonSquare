@@ -1,42 +1,30 @@
 package pigeonsquare.pigeons;
 
-import com.sun.javafx.geom.Vec2d;
 import pigeonsquare.*;
 import pigeonsquare.dog.Dog;
+import pigeonsquare.utils.Position;
 
 import java.util.Random;
 
 abstract public class Pigeon extends MobileItem {
     Pigeon() {
         Random random = new Random();
-        this.speed = random.nextInt(201);
+        int minSpeed = 100;
+        int maxSpeed = 600;
+        this.speed = random.nextInt(maxSpeed-minSpeed) + minSpeed;
     }
 
-    @Override
-    public void run() {
-        while (this.running) {
-
-            Item goal = Environment.getInstance().getGoal(this.position);
-
-            if(goal != null) {
-                Vec2d goalPosition = goal.getPosition();
-                if(goal instanceof Dog) {
-                    System.out.println("Go away from dog at pos : X("+goalPosition.x+") Y("+goalPosition.y+")");
-                }
-                if(goal instanceof Food) {
-                    System.out.println("Go toward food at pos : X("+goalPosition.x+") Y("+goalPosition.y+")");
-                }
-            }
-            //Si pas de nourriture on fait quoi ? On va qqe part au hasard ?
-
-
-
-            try {
-                Thread.sleep(this.thirtyFPS);
-            } catch (InterruptedException e) {
-                System.out.println("Thread stopped");
-                break;
-            }
+    public void move(Item goal) {
+        Position newPosition = null;
+        if(goal instanceof Food) {
+            newPosition = new Position(goal.getPosition().x - this.position.x,goal.getPosition().y - this.position.y);
         }
+        if(goal instanceof Dog) {
+            newPosition = new Position((goal.getPosition().x - this.position.x) * -1,(goal.getPosition().y - this.position.y) *-1);
+        }
+        newPosition.normalize();
+        this.position.x += newPosition.x * (this.speed/100.0);
+        this.position.y += newPosition.y * (this.speed/100.0);
     }
+
 }
