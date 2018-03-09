@@ -34,6 +34,12 @@ public class Environment {
         return environment;
     }
 
+    /**
+     Add a new pigeon to the environment at a random position
+     The type of the pigeon is randomly chosen between Biset/Colombin/Ramier
+     @return The pigeon created
+     */
+
     public Item addPigeon() {
         Item item;
         Random random = new Random();
@@ -57,6 +63,11 @@ public class Environment {
         }
     }
 
+    /**
+     Add a new food to the environment at a specified position
+     @return The food created
+     */
+
     public Item addFood(Position position) {
         Item item;
         lock.writeLock().lock();
@@ -66,6 +77,11 @@ public class Environment {
 
         return item;
     }
+
+    /**
+     Remove an item from the environment and from the graphic interface
+     @param i  The item to be removed
+     */
 
     public void removeItem(Item i) {
         lock.writeLock().lock();
@@ -80,6 +96,11 @@ public class Environment {
         }
     }
 
+    /**
+     Add a new dog to the environment at a random position
+     @return The dog created
+     */
+
     public Item addDog() {
         Item item;
         Position position = randomCoordsInWindow();
@@ -89,6 +110,10 @@ public class Environment {
         lock.writeLock().unlock();
         return item;
     }
+
+    /**
+     Reinitialize the game
+     */
 
     public void reset() {
         List<Item> items = new ArrayList<>();
