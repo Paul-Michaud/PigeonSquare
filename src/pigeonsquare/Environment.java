@@ -1,12 +1,13 @@
 package pigeonsquare;
 
-import com.sun.javafx.geom.Vec2d;
 import javafx.application.Platform;
+import javafx.geometry.Pos;
 import pigeonsquare.dog.Dog;
 import pigeonsquare.pigeons.Biset;
 import pigeonsquare.pigeons.Colombin;
 import pigeonsquare.pigeons.Pigeon;
 import pigeonsquare.pigeons.Ramier;
+import pigeonsquare.utils.Position;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,8 +38,7 @@ public class Environment {
         Item item;
         Random random = new Random();
 
-        Vec2d position = randomCoordsInWindow();
-
+        Position position = randomCoordsInWindow();
         switch (random.nextInt(3) + 1) {
             case 1:
                 item = new Biset(position);
@@ -57,7 +57,7 @@ public class Environment {
         }
     }
 
-    public Item addFood(Vec2d position) {
+    public Item addFood(Position position) {
         Item item;
         lock.writeLock().lock();
         item = new Food(position);
@@ -82,7 +82,7 @@ public class Environment {
 
     public Item addDog() {
         Item item;
-        Vec2d position = randomCoordsInWindow();
+        Position position = randomCoordsInWindow();
         lock.writeLock().lock();
         item = new Dog(position);
         dogList.add((Dog) item);
@@ -119,7 +119,7 @@ public class Environment {
      @return The goal (item)
      */
 
-    public Item getGoal(Vec2d position) {
+    public Item getGoal(Position position) {
         double minDist = Double.POSITIVE_INFINITY;
         Item goal = null;
 
