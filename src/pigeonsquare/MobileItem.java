@@ -20,25 +20,26 @@ public abstract class MobileItem extends Item {
     @Override
     public void run() {
         while (this.running) {
-            Item goal = Environment.getInstance().getGoal(this.position);
+            if(this instanceof Pigeon) {
+                Item goal = Environment.getInstance().getPigeonGoal(this.position);
 
-            if(goal != null) {
-                move(goal);
+                if (goal != null) {
+                    move(goal);
+                }
+                //We check if the position is not out of bound
+                this.position.x = Math.max(Math.min(this.position.x, Constants.SCREEN_WIDTH - this.imageView.getFitWidth()), 0);
+                this.position.y = Math.max(Math.min(this.position.y, Constants.SCREEN_HEIGHT - this.imageView.getFitHeight()), 25);
+
+                Platform.runLater(() -> {
+                    this.imageView.setX(this.position.x);
+                    this.imageView.setY(this.position.y);
+                });
+
+                //if close enough to a food a pigeon will eat it
+                if (goal instanceof Food && this.isClose(goal) && ((Food) goal).isFresh()) {
+                    Environment.getInstance().removeItem(goal);
+                }
             }
-            //We check if the position is not out of bound
-            this.position.x = Math.max(Math.min(this.position.x, Constants.SCREEN_WIDTH - this.imageView.getFitWidth()), 0);
-            this.position.y = Math.max(Math.min(this.position.y, Constants.SCREEN_HEIGHT - this.imageView.getFitHeight()), 25);
-
-            Platform.runLater(() -> {
-                this.imageView.setX(this.position.x);
-                this.imageView.setY(this.position.y);
-            });
-
-            //if close enough to a food a pigeon will eat it
-            if(this instanceof Pigeon && goal instanceof Food && this.isClose(goal)) {
-                Environment.getInstance().removeItem(goal);
-            }
-
             try {
                 Thread.sleep(this.sixtyFPS);
             } catch (InterruptedException e) {
