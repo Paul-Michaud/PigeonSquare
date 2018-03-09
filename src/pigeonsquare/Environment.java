@@ -6,6 +6,7 @@ import pigeonsquare.pigeons.Biset;
 import pigeonsquare.pigeons.Colombin;
 import pigeonsquare.pigeons.Pigeon;
 import pigeonsquare.pigeons.Ramier;
+import pigeonsquare.utils.Constants;
 import pigeonsquare.utils.Position;
 
 import java.util.ArrayList;
@@ -118,7 +119,7 @@ public class Environment {
      @return The goal (item)
      */
 
-    public Item getGoal(Position position) {
+    public Item getPigeonGoal(Position position) {
         double minDist = Double.POSITIVE_INFINITY;
         Item goal = null;
 
@@ -135,7 +136,7 @@ public class Environment {
                         minDist = dist;
                         goal = i;
                     }
-                    if(i instanceof Dog) {
+                    if(i instanceof Dog && dist < Constants.IS_SCARED) {
                         minDist = dist;
                         goal = i;
                     }
