@@ -38,9 +38,7 @@ public abstract class MobileItem extends Item {
 
                 //if close enough to a food a pigeon will eat it
                 if (goal instanceof Food && this.isClose(goal) && ((Food) goal).isFresh()) {
-                    Environment.getInstance().removeItem(goal);
-                    ((Pigeon) this).incrementFoodEaten();
-
+                    ((Pigeon) this).eatFood(goal);
                 }
             }
             try {

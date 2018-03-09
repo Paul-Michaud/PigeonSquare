@@ -82,19 +82,22 @@ public class Environment {
     /**
      Remove an item from the environment and from the graphic interface
      @param i  The item to be removed
+     @return True if the item has been correctly removed false if not
      */
 
-    public void removeItem(Item i) {
+    public boolean removeItem(Item i) {
+        boolean removedStatus = false;
         lock.writeLock().lock();
         try {
-            if(i instanceof Food) removeFood((Food)i);
-            if(i instanceof Dog) removeDog((Dog)i);
-            if(i instanceof Pigeon) removePigeon((Pigeon)i);
+            if(i instanceof Food) removedStatus = removeFood((Food)i);
+            if(i instanceof Dog) removedStatus =removeDog((Dog)i);
+            if(i instanceof Pigeon) removedStatus = removePigeon((Pigeon)i);
             i.stop();
             Platform.runLater(() -> Main.removeGraphicItem(i));
         } finally {
             lock.writeLock().unlock();
         }
+        return removedStatus;
     }
 
     /**
@@ -176,31 +179,47 @@ public class Environment {
     /**
      Remove a food from the food list if it exists
      @param food The food to be removed
+     @return True if the item has been correctly removed false if not
      */
 
-    private void removeFood(Food food) {
+    private boolean removeFood(Food food) {
         if(foodList.contains(food)) {
             foodList.remove(food);
+            return true;
+        } else {
+            return false;
         }
     }
 
     /**
      Remove a dog from the dog list if it exists
      @param dog The dog to be removed
+     @return True if the item has been correctly removed false if not
      */
 
-    private void removeDog(Dog dog) {
-        if(dogList.contains(dog)) dogList.remove(dog);
+    private boolean removeDog(Dog dog) {
+        if(dogList.contains(dog)) {
+            dogList.remove(dog);
+            return true;
+        }    else {
+            return false;
+        }
 
     }
 
     /**
      Remove a pigeon from the pigeon list if it exists
      @param pigeon The pigeon to be removed
+     @return True if the item has been correctly removed false if not
      */
 
-    private void removePigeon(Pigeon pigeon) {
-        if(pigeonsList.contains(pigeon)) pigeonsList.remove(pigeon);
+    private boolean removePigeon(Pigeon pigeon) {
+        if(pigeonsList.contains(pigeon))  {
+            pigeonsList.remove(pigeon);
+            return true;
+        } else {
+            return false;
+        }
 
     }
 }
