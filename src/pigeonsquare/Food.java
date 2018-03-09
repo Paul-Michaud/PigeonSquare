@@ -1,13 +1,12 @@
 package pigeonsquare;
 
-import com.sun.javafx.geom.Vec2d;
-
+import pigeonsquare.utils.Position;
 
 public class Food extends Item {
     private static final String assetPath = "assets/seed.png";
     private boolean isFresh;
 
-    Food(Vec2d position) {
+    Food(Position position) {
         this.position = position;
         this.isFresh = true;
         this.loadImage(assetPath);
