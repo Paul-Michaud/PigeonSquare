@@ -89,12 +89,14 @@ public class Environment {
      */
 
     public boolean removeItem(Item i) {
+        this.lock.writeLock().lock();
         boolean removedStatus = false;
         if(i instanceof Food) removedStatus = removeFood((Food)i);
         if(i instanceof Dog) removedStatus = removeDog((Dog)i);
         if(i instanceof Pigeon) removedStatus = removePigeon((Pigeon)i);
         i.stop();
         Platform.runLater(() -> Main.removeGraphicItem(i));
+        this.lock.writeLock().unlock();
         return removedStatus;
     }
 
@@ -114,7 +116,7 @@ public class Environment {
     }
 
     /**
-     Reinitialize the game
+     Reinitialize the environment
      */
 
     public void reset() {

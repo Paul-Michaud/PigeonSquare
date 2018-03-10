@@ -63,10 +63,14 @@ public abstract class Item implements Runnable {
 
             //Without padding to food wouldn't appear
             //at the center of our mouse click
+
             double paddingX = imageView.getFitWidth() / 2.0;
             double paddingY = imageView.getFitHeight() / 2.0;
             this.position.x -= paddingX;
             this.position.y -= paddingY;
+
+            this.position.x = Math.max(Math.min(this.position.x, Constants.SCREEN_WIDTH - this.imageView.getFitWidth()), 0);
+            this.position.y = Math.max(Math.min(this.position.y, Constants.SCREEN_HEIGHT - this.imageView.getFitHeight()), 25);
 
             this.imageView.setX(this.position.x);
             this.imageView.setY(this.position.y);

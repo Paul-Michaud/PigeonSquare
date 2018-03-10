@@ -36,5 +36,5 @@ public class Constants {
     /**
      * OTHERS
      */
-    public static final int IS_CLOSE = 15;
+    public static final int IS_CLOSE = 25;
 }
