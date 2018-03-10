@@ -3,20 +3,20 @@ package pigeonsquare.dog;
 import pigeonsquare.Environment;
 import pigeonsquare.Item;
 import pigeonsquare.MobileItem;
+import pigeonsquare.utils.Constants;
 import pigeonsquare.utils.Position;
 
 public class Dog extends MobileItem {
-
-    private static final String assetPath = "assets/dog.png";
+    private static final String assetPath = Constants.PATH_DOG;
 
     public Dog(Position position) {
         this.position = position;
         this.loadImage(assetPath);
         this.speed = 0;
     }
-    public void move(Item goal) {
 
-    }
+    public void move(Item goal) {}
+
     @Override
     public void run() {
         while (this.running) {

@@ -6,8 +6,8 @@ import pigeonsquare.utils.Position;
 public class Food extends Item {
     private static final String goodSeed = Constants.PATH_GOOD_SEED;
     private static final String badSeed = Constants.PATH_BAD_SEED;
-
     private boolean isFresh;
+
     Food(Position position) {
         this.position = position;
         this.isFresh = true;
@@ -30,5 +30,4 @@ public class Food extends Item {
     public boolean isFresh() {
         return isFresh;
     }
-
 }

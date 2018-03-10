@@ -9,6 +9,4 @@ public class Functions {
         int randomY = random.nextInt(Constants.SCREEN_HEIGHT);
         return new Position(randomX,randomY);
     }
-
-
 }
