@@ -7,6 +7,7 @@ import pigeonsquare.utils.Constants;
 import pigeonsquare.utils.Position;
 
 public class Dog extends MobileItem {
+
     public Dog(Position position) {
         this.position = position;
         this.loadImage(Constants.PATH_DOG);
