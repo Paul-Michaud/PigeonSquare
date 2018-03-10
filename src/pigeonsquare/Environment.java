@@ -158,7 +158,7 @@ public class Environment {
             for (Item i : items) {
                 double dist = i.position.distance(position);
                 if (dist < minDist) {
-                    if(i instanceof Food && ((Food) i).isFresh()) {
+                    if(i instanceof Food) {
                         minDist = dist;
                         goal = i;
                     }
