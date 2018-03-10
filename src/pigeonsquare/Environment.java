@@ -90,16 +90,11 @@ public class Environment {
 
     public boolean removeItem(Item i) {
         boolean removedStatus = false;
-        lock.writeLock().lock();
-        try {
-            if(i instanceof Food) removedStatus = removeFood((Food)i);
-            if(i instanceof Dog) removedStatus =removeDog((Dog)i);
-            if(i instanceof Pigeon) removedStatus = removePigeon((Pigeon)i);
-            i.stop();
-            Platform.runLater(() -> Main.removeGraphicItem(i));
-        } finally {
-            lock.writeLock().unlock();
-        }
+        if(i instanceof Food) removedStatus = removeFood((Food)i);
+        if(i instanceof Dog) removedStatus = removeDog((Dog)i);
+        if(i instanceof Pigeon) removedStatus = removePigeon((Pigeon)i);
+        i.stop();
+        Platform.runLater(() -> Main.removeGraphicItem(i));
         return removedStatus;
     }
 
