@@ -4,7 +4,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import pigeonsquare.dog.Dog;
+import pigeonsquare.pigeons.Biset;
+import pigeonsquare.pigeons.Colombin;
 import pigeonsquare.pigeons.Pigeon;
+import pigeonsquare.pigeons.Ramier;
 import pigeonsquare.utils.Constants;
 import pigeonsquare.utils.Position;
 
@@ -38,9 +41,24 @@ public abstract class Item implements Runnable {
                 this.imageView.setFitWidth(32);
             }
 
-            if(this instanceof Pigeon || this instanceof Dog) {
+            if(this instanceof Dog) {
                 this.imageView.setFitHeight(64);
                 this.imageView.setFitWidth(64);
+            }
+
+            if(this instanceof Pigeon && this instanceof Ramier) {
+                this.imageView.setFitHeight(80);
+                this.imageView.setFitWidth(80);
+            }
+
+            if(this instanceof Pigeon && this instanceof Biset) {
+                this.imageView.setFitHeight(64);
+                this.imageView.setFitWidth(64);
+            }
+
+            if(this instanceof Pigeon && this instanceof Colombin) {
+                this.imageView.setFitHeight(48);
+                this.imageView.setFitWidth(48);
             }
 
             //Without padding to food wouldn't appear
