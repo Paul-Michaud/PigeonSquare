@@ -28,7 +28,7 @@ public class Constants {
      * FOOD
      */
     public static final int MAX_FOOD = 5;
-    public static final int FRESH_TIME = 2000;
+    public static final int FRESH_TIME = 3000;
     public static final int STALE_TIME = 2000;
     public static final String PATH_GOOD_SEED = "assets/seed.png";
     public static final String PATH_BAD_SEED = "assets/bad_seed.png";
