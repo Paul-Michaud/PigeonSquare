@@ -26,10 +26,8 @@ public class DogGenerator implements Runnable {
             int sleepCreateDog = r.nextInt(max - min) + min;
             try {
                 Thread.sleep(sleepCreateDog);
-            } catch (InterruptedException e) {
-                System.out.println("Thread stopped");
-                break;
-            }
+            } catch (InterruptedException e) { break; }
+
             Item newDog = Environment.getInstance().addDog();
             Thread threadDog = new Thread(newDog);
             threadDog.start();

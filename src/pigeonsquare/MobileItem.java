@@ -11,9 +11,7 @@ public abstract class MobileItem extends Item {
     private final int thirtyFPS = 32;
     private final int oneTwentyFPS = 8;
 
-    protected MobileItem() {
-
-    }
+    protected MobileItem() { }
 
     protected abstract void move(Item goal);
 
@@ -48,6 +46,4 @@ public abstract class MobileItem extends Item {
             }
         }
     }
-
-
-    }
+}

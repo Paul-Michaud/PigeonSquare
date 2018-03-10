@@ -4,14 +4,12 @@ import pigeonsquare.utils.Constants;
 import pigeonsquare.utils.Position;
 
 public class Food extends Item {
-    private static final String goodSeed = Constants.PATH_GOOD_SEED;
-    private static final String badSeed = Constants.PATH_BAD_SEED;
     private boolean isFresh;
 
     Food(Position position) {
         this.position = position;
         this.isFresh = true;
-        this.loadImage(goodSeed);
+        this.loadImage(Constants.PATH_GOOD_SEED);
     }
 
     @Override
@@ -19,7 +17,7 @@ public class Food extends Item {
         try {
             Thread.sleep(Constants.FRESH_TIME);
             this.isFresh = false;
-            this.changeImage(badSeed);
+            this.changeImage(Constants.PATH_BAD_SEED);
             Thread.sleep(Constants.STALE_TIME);
             Environment.getInstance().removeItem(this);
         } catch (InterruptedException e) {

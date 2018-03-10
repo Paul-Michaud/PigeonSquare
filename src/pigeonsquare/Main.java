@@ -28,7 +28,6 @@ public class Main extends Application {
         btnReset.setLayoutY(0);
         root.getChildren().add(btnReset);
 
-
         // DOG GENERATOR
         Thread threadDogGenerator = new Thread(new DogGenerator());
         threadDogGenerator.start();
@@ -61,7 +60,7 @@ public class Main extends Application {
             }
         });
 
-        root.setStyle("-fx-background-color: white");
+        root.setStyle(Constants.BACKGROUND_COLOR);
         primaryStage.setScene(new Scene(root, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT));
         primaryStage.show();
     }

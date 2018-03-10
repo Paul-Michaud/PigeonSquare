@@ -2,6 +2,7 @@ package pigeonsquare.pigeons;
 
 import pigeonsquare.*;
 import pigeonsquare.dog.Dog;
+import pigeonsquare.utils.Constants;
 import pigeonsquare.utils.Position;
 
 import java.util.Random;
@@ -11,9 +12,7 @@ abstract public class Pigeon extends MobileItem {
 
     Pigeon() {
         Random random = new Random();
-        int minSpeed = 100;
-        int maxSpeed = 600;
-        this.speed = random.nextInt(maxSpeed-minSpeed) + minSpeed;
+        this.speed = random.nextInt(Constants.MAX_SPEED-Constants.MIN_SPEED) + Constants.MIN_SPEED;
         this.foodEaten = 0;
     }
 
@@ -34,7 +33,7 @@ abstract public class Pigeon extends MobileItem {
     public void eatFood(Item goal) {
         if(Environment.getInstance().removeItem(goal)) {
             this.foodEaten++;
-            this.text.setText("Food " + foodEaten);
+            this.text.setText(foodEaten+" food");
         }
     }
 }

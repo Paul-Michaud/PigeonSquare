@@ -39,7 +39,6 @@ public class Environment {
      The type of the pigeon is randomly chosen between Biset/Colombin/Ramier
      @return The pigeon created
      */
-
     public Item addPigeon() {
         Item item;
         Random random = new Random();
@@ -70,7 +69,6 @@ public class Environment {
      Add a new food to the environment at a specified position
      @return The food created
      */
-
     public Item addFood(Position position) {
         if (foodList.size() < Constants.MAX_FOOD) {
             Item item;
@@ -87,7 +85,6 @@ public class Environment {
      @param i  The item to be removed
      @return True if the item has been correctly removed false if not
      */
-
     public boolean removeItem(Item i) {
         this.lock.writeLock().lock();
         boolean removedStatus = false;
@@ -104,7 +101,6 @@ public class Environment {
      Add a new dog to the environment at a random position
      @return The dog created
      */
-
     public Item addDog() {
         Item item;
         Position position = randomCoordsInWindow();
@@ -118,7 +114,6 @@ public class Environment {
     /**
      Reinitialize the environment
      */
-
     public void reset() {
         List<Item> items = new ArrayList<>();
         items.addAll(this.pigeonsList);
@@ -147,7 +142,6 @@ public class Environment {
      @param position The position we're searching from
      @return The goal (item)
      */
-
     public Item getPigeonGoal(Position position) {
         double minDist = Double.POSITIVE_INFINITY;
         Item goal = null;
@@ -181,7 +175,6 @@ public class Environment {
      @param food The food to be removed
      @return True if the item has been correctly removed false if not
      */
-
     private boolean removeFood(Food food) {
         if(foodList.contains(food)) {
             foodList.remove(food);
@@ -196,7 +189,6 @@ public class Environment {
      @param dog The dog to be removed
      @return True if the item has been correctly removed false if not
      */
-
     private boolean removeDog(Dog dog) {
         if(dogList.contains(dog)) {
             dogList.remove(dog);
@@ -212,7 +204,6 @@ public class Environment {
      @param pigeon The pigeon to be removed
      @return True if the item has been correctly removed false if not
      */
-
     private boolean removePigeon(Pigeon pigeon) {
         if(pigeonsList.contains(pigeon))  {
             pigeonsList.remove(pigeon);

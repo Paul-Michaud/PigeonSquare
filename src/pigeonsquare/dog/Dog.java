@@ -7,11 +7,9 @@ import pigeonsquare.utils.Constants;
 import pigeonsquare.utils.Position;
 
 public class Dog extends MobileItem {
-    private static final String assetPath = Constants.PATH_DOG;
-
     public Dog(Position position) {
         this.position = position;
-        this.loadImage(assetPath);
+        this.loadImage(Constants.PATH_DOG);
         this.speed = 0;
     }
 
@@ -21,7 +19,7 @@ public class Dog extends MobileItem {
     public void run() {
         while (this.running) {
             try {
-                Thread.sleep(3000);
+                Thread.sleep(Constants.DOG_LIFE_TIME);
                 Environment.getInstance().removeItem(this);
             } catch (InterruptedException e) {
                 e.printStackTrace();

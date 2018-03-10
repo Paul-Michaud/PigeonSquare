@@ -15,7 +15,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public abstract class Item implements Runnable {
-
     ImageView imageView;
     protected final Text text;
     protected Position position;
@@ -37,28 +36,28 @@ public abstract class Item implements Runnable {
             this.imageView.setImage(image);
 
             if(this instanceof Food) {
-                this.imageView.setFitHeight(32);
-                this.imageView.setFitWidth(32);
+                this.imageView.setFitHeight(Constants.FOOD_SIZE);
+                this.imageView.setFitWidth(Constants.FOOD_SIZE);
             }
 
             if(this instanceof Dog) {
-                this.imageView.setFitHeight(64);
-                this.imageView.setFitWidth(64);
+                this.imageView.setFitHeight(Constants.DOG_SIZE);
+                this.imageView.setFitWidth(Constants.DOG_SIZE);
             }
 
             if(this instanceof Pigeon && this instanceof Ramier) {
-                this.imageView.setFitHeight(80);
-                this.imageView.setFitWidth(80);
+                this.imageView.setFitHeight(Constants.RAMIER_SIZE);
+                this.imageView.setFitWidth(Constants.RAMIER_SIZE);
             }
 
             if(this instanceof Pigeon && this instanceof Biset) {
-                this.imageView.setFitHeight(64);
-                this.imageView.setFitWidth(64);
+                this.imageView.setFitHeight(Constants.BISET_SIZE);
+                this.imageView.setFitWidth(Constants.BISET_SIZE);
             }
 
             if(this instanceof Pigeon && this instanceof Colombin) {
-                this.imageView.setFitHeight(48);
-                this.imageView.setFitWidth(48);
+                this.imageView.setFitHeight(Constants.COLOMBIN_SIZE);
+                this.imageView.setFitWidth(Constants.COLOMBIN_SIZE);
             }
 
             //Without padding to food wouldn't appear
@@ -109,8 +108,6 @@ public abstract class Item implements Runnable {
     }
 
     @Override
-    public void run() {
-
-    }
+    public void run() { }
 
 }
