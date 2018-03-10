@@ -5,7 +5,9 @@
 
 <h3>Fonctionnement</h3>
 
-Pour ajouter un pigeon aléatoire (bleu: ramier, gris: colombin ou mauve: biset), cliquer sur le bouton "Add random pigeon". Pour ajouter de la nourriture, il suffit de cliquer n'importe où dans la fenêtre. Enfin, il est possible de réinitialiser Pigeon Square avec le bouton "Reset". 
+Pour ajouter un pigeon aléatoire (bleu: ramier, gris: colombin ou mauve: biset), cliquer sur le bouton "Add random pigeon". Pour ajouter de la nourriture, il suffit de cliquer n'importe où dans la fenêtre. Enfin, il est possible de réinitialiser l'environnement avec le bouton "Reset". 
+
+Par défaut, la limite de pigeons est fixée à 10 maximum et la nourriture à 5 maximum. Ces limites sont facilement modifiables dans la classe utils/Constants.
 
 <h3>Exigences réalisées</h3>
 
