@@ -23,5 +23,5 @@ Par défaut, la limite de pigeons est fixée à 10 maximum et la nourriture à 5
 - [x] Si un pigeon touche une nourriture pas fraiche, il l'ignore. Sinon, il la mange.
 - [x] Des chiens apparaissent aléatoirement et effraient les pigeons qui s'éloignent donc du danger. La probabilité d'apparition d'un chien change à chaque tour.
 <p align="center">
-  <img src="assets/dog.png" width="50"/>
+  <img src="assets/dog.png" width="100"/>
 </p>
