@@ -38,7 +38,6 @@ public class Main extends Application {
         btnAddPigeon.setLayoutX(60);
         btnAddPigeon.setLayoutY(0);
         btnAddPigeon.setOnAction(event -> {
-            System.out.println("Add Pigeon");
             Item item = Environment.getInstance().addPigeon();
             if(item != null){
                 root.getChildren().add(item.getImageView());

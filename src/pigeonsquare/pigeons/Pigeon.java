@@ -30,13 +30,10 @@ abstract public class Pigeon extends MobileItem {
         this.position.y += newPosition.y * (this.speed/100.0);
     }
 
-
-
     public void eatFood(Item goal) {
         if(Environment.getInstance().removeItem(goal)) {
             this.foodEaten++;
             this.text.setText("Food " + foodEaten);
         }
     }
-
 }

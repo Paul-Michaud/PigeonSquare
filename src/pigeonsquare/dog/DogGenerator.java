@@ -34,12 +34,7 @@ public class DogGenerator implements Runnable {
             Item newDog = Environment.getInstance().addDog();
             Thread threadDog = new Thread(newDog);
             threadDog.start();
-
             Platform.runLater(() -> Main.addGraphicItem((newDog.getImageView())));
-
-
-
-
         }
     }
 }

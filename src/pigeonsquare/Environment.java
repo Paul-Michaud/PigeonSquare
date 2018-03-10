@@ -46,22 +46,24 @@ public class Environment {
 
         Position position = randomCoordsInWindow();
 
-        switch (random.nextInt(3) + 1) {
-            case 1:
-                item = new Biset(position);
-                pigeonsList.add((Pigeon)item);
-                return item;
-            case 2:
-                item = new Colombin(position);
-                pigeonsList.add((Pigeon)item);
-                return item;
-            case 3:
-                item = new Ramier(position);
-                pigeonsList.add((Pigeon)item);
-                return item;
-            default:
-                return null;
-        }
+        if (pigeonsList.size() < Constants.MAX_PIGEON) {
+            switch (random.nextInt(3) + 1) {
+                case 1:
+                    item = new Biset(position);
+                    pigeonsList.add((Pigeon)item);
+                    return item;
+                case 2:
+                    item = new Colombin(position);
+                    pigeonsList.add((Pigeon)item);
+                    return item;
+                case 3:
+                    item = new Ramier(position);
+                    pigeonsList.add((Pigeon)item);
+                    return item;
+                default:
+                    return null;
+            }
+        } else return null;
     }
 
     /**
@@ -70,13 +72,14 @@ public class Environment {
      */
 
     public Item addFood(Position position) {
-        Item item;
-        lock.writeLock().lock();
-        item = new Food(position);
-        foodList.add((Food) item);
-        lock.writeLock().unlock();
-
-        return item;
+        if (foodList.size() < Constants.MAX_FOOD) {
+            Item item;
+            lock.writeLock().lock();
+            item = new Food(position);
+            foodList.add((Food) item);
+            lock.writeLock().unlock();
+            return item;
+        } else return null;
     }
 
     /**
