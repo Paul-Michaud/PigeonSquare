@@ -19,6 +19,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Pigeon Square");
+        primaryStage.setResizable(false);
         Button btnReset = new Button();
         btnReset.setText("Reset");
         btnReset.setOnAction(event -> Environment.getInstance().reset());
