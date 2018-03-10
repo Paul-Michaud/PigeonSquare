@@ -8,7 +8,6 @@ import pigeonsquare.Main;
 import java.util.Random;
 
 public class DogGenerator implements Runnable {
-
     private final boolean running;
 
     public DogGenerator() {

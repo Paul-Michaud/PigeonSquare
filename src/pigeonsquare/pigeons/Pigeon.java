@@ -8,6 +8,7 @@ import java.util.Random;
 
 abstract public class Pigeon extends MobileItem {
     private int foodEaten;
+
     Pigeon() {
         Random random = new Random();
         int minSpeed = 100;
@@ -29,7 +30,6 @@ abstract public class Pigeon extends MobileItem {
         this.position.x += newPosition.x * (this.speed/100.0);
         this.position.y += newPosition.y * (this.speed/100.0);
     }
-
 
     public void eatFood(Item goal) {
         if(Environment.getInstance().removeItem(goal)) {
