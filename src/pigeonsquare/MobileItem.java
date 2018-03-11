@@ -4,8 +4,10 @@ import javafx.application.Platform;
 import pigeonsquare.pigeons.Pigeon;
 import pigeonsquare.utils.Constants;
 
+/**
+ * MobileItem class
+ */
 public abstract class MobileItem extends Item {
-
     protected int speed;
     private final int sixtyFPS = 16;
     private final int thirtyFPS = 32;

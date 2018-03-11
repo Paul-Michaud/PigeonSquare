@@ -14,21 +14,35 @@ import pigeonsquare.utils.Position;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+/**
+ * Item class
+ */
 public abstract class Item implements Runnable {
     ImageView imageView;
     protected final Text text;
     protected Position position;
     protected boolean running;
 
+    /**
+     * Constructor
+     */
     Item(){
         this.running = true;
         this.text = new Text();
     }
 
+    /**
+     * ImageView getter
+     * @return The ImageView
+     */
     public ImageView getImageView() {
         return this.imageView;
     }
 
+    /**
+     * Load an image form a path
+     * @param path The path to the image
+     */
     protected void loadImage(String path) {
         try {
             Image image = new Image(new FileInputStream(path));
@@ -80,7 +94,10 @@ public abstract class Item implements Runnable {
         }
     }
 
-
+    /**
+     * Change the image of an item
+     * @param newPath The path to the new image
+     */
     void changeImage(String newPath) {
         try {
             Image image = new Image(new FileInputStream(newPath));
@@ -90,19 +107,35 @@ public abstract class Item implements Runnable {
         }
     }
 
+    /**
+     * Stop method
+     */
     public void stop(){
         this.running = false;
     }
 
+    /**
+     * Position getter
+     * @return The position
+     */
     public Position getPosition() {
         return this.position;
     }
 
+    /**
+     * Check if the item is close to the goal given
+     * @param goal The item to check
+     * @return A boolean
+     */
     boolean isClose(Item goal) {
         //Define the threshold
         return this.position.distance(goal.getPosition()) < Constants.IS_CLOSE;
     }
 
+    /**
+     * Text getter
+     * @return The Text
+     */
     public Text getText() {
         return text;
     }

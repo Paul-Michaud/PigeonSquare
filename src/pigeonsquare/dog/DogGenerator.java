@@ -7,15 +7,21 @@ import pigeonsquare.Main;
 
 import java.util.Random;
 
+/**
+ * Dog generator class.
+ */
 public class DogGenerator implements Runnable {
     private final boolean running;
 
+    /**
+     * Constructor
+     */
     public DogGenerator() {
         this.running = true;
     }
 
     /**
-     * This method will create a dog randomly between 10 ms and 10 sec
+     * Generate a dog randomly between 10 ms and 10 sec.
      */
     @Override
     public void run() {

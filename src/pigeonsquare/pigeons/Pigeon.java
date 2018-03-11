@@ -7,15 +7,25 @@ import pigeonsquare.utils.Position;
 
 import java.util.Random;
 
+/**
+ * Pigeon class. Contains the functions which are common to all sorts of pigeons.
+ */
 abstract public class Pigeon extends MobileItem {
     private int foodEaten;
 
+    /**
+     * Constructor
+     */
     Pigeon() {
         Random random = new Random();
         this.speed = random.nextInt(Constants.MAX_SPEED-Constants.MIN_SPEED) + Constants.MIN_SPEED;
         this.foodEaten = 0;
     }
 
+    /**
+     * Make the pigeon move to his target item.
+     * @param goal The food to reach
+     */
     public void move(Item goal) {
         //Init to old position in case we are not in any of the following if
         Position newPosition =  new Position(this.position.x, this.position.y);
@@ -30,6 +40,10 @@ abstract public class Pigeon extends MobileItem {
         this.position.y += newPosition.y * (this.speed/100.0);
     }
 
+    /**
+     * Male the pigeon eat the food
+     * @param goal The food to eat
+     */
     public void eatFood(Item goal) {
         if(Environment.getInstance().removeItem(goal)) {
             this.foodEaten++;

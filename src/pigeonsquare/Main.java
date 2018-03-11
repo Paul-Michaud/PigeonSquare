@@ -10,12 +10,24 @@ import javafx.stage.Stage;
 import pigeonsquare.dog.*;
 import pigeonsquare.utils.*;
 
+/**
+ * Main class
+ */
 public class Main extends Application {
     private static final Pane root = new Pane();
 
+    /**
+     * Main function
+     * @param args The args
+     */
     public static void main(String[] args) {
         launch(args);
     }
+
+    /**
+     * Application start method
+     * @param primaryStage The application scene
+     */
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Pigeon Square");
@@ -65,11 +77,19 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    /**
+     * Remove an item from the window
+     * @param i The item
+     */
     public static void removeGraphicItem(Item i){
         root.getChildren().remove(i.getImageView());
         root.getChildren().remove(i.getText());
     }
 
+    /**
+     * Add an item to the window
+     * @param node The node
+     */
     public static void addGraphicItem(Node node){
         root.getChildren().add(node);
     }

@@ -6,8 +6,15 @@ import pigeonsquare.MobileItem;
 import pigeonsquare.utils.Constants;
 import pigeonsquare.utils.Position;
 
+/**
+ * Dog class.
+ */
 public class Dog extends MobileItem {
 
+    /**
+     * Constructor
+     * @param position The initial position
+     */
     public Dog(Position position) {
         this.position = position;
         this.loadImage(Constants.PATH_DOG);
@@ -16,6 +23,9 @@ public class Dog extends MobileItem {
 
     public void move(Item goal) {}
 
+    /**
+     * Life cycle of the dog (he disappears after a few seconds)
+     */
     @Override
     public void run() {
         while (this.running) {
